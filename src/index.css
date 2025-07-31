@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Wilderland Dark Fantasy Design System */
+
+@layer base {
+  :root {
+    --background: 220 15% 8%;
+    --foreground: 210 40% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 280 100% 65%;
+    --primary-foreground: 220 15% 8%;
+
+    --secondary: 30 100% 50%;
+    --secondary-foreground: 220 15% 8%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 200 100% 60%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 280 100% 65%;
+
+    --radius: 0.75rem;
+
+    /* Wilderland Custom Colors */
+    --magic-glow: 280 100% 65%;
+    --ember-glow: 30 100% 50%;
+    --frost-blue: 200 100% 60%;
+    --shadow-deep: 220 15% 5%;
+    --wilderness-green: 120 40% 40%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(280 30% 15%) 50%, hsl(220 15% 8%) 100%);
+    --gradient-magic: linear-gradient(45deg, hsl(280 100% 65%) 0%, hsl(200 100% 60%) 100%);
+    --gradient-ember: linear-gradient(45deg, hsl(30 100% 50%) 0%, hsl(0 100% 60%) 100%);
+    
+    /* Shadows & Effects */
+    --glow-magic: 0 0 20px hsl(280 100% 65% / 0.3), 0 0 40px hsl(280 100% 65% / 0.2);
+    --glow-ember: 0 0 20px hsl(30 100% 50% / 0.3), 0 0 40px hsl(30 100% 50% / 0.2);
+    --shadow-cinematic: 0 20px 50px -20px hsl(220 15% 5% / 0.8);
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Orbitron', 'Inter', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Effects */
+  .hero-glow {
+    box-shadow: var(--glow-magic);
+    transition: var(--transition-smooth);
+  }
+  
+  .hero-glow:hover {
+    box-shadow: var(--glow-magic), 0 0 60px hsl(280 100% 65% / 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .ember-glow {
+    box-shadow: var(--glow-ember);
+    transition: var(--transition-smooth);
+  }
+  
+  .ember-glow:hover {
+    box-shadow: var(--glow-ember), 0 0 60px hsl(30 100% 50% / 0.4);
+    transform: translateY(-2px);
+  }
+  
+  /* Parallax Container */
+  .parallax-container {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+  }
+  
+  .parallax-element {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .parallax-back {
+    transform: translateZ(-1px) scale(2);
+  }
+  
+  .parallax-base {
+    transform: translateZ(0);
+  }
+  
+  /* Animated Background */
+  .animated-bg {
+    background: var(--gradient-hero);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+  }
+  
+  /* Game UI Elements */
+  .game-card {
+    background: linear-gradient(145deg, hsl(220 15% 12%) 0%, hsl(220 15% 8%) 100%);
+    border: 1px solid hsl(280 100% 65% / 0.3);
+    box-shadow: var(--shadow-cinematic);
+    transition: var(--transition-smooth);
+  }
+  
+  .game-card:hover {
+    border-color: hsl(280 100% 65% / 0.6);
+    transform: translateY(-8px) rotateY(5deg);
+    box-shadow: var(--shadow-cinematic), var(--glow-magic);
+  }
+  
+  /* Cinematic Text */
+  .cinematic-title {
+    background: var(--gradient-magic);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px hsl(280 100% 65% / 0.5);
+  }
+  
+  /* Gaming Title - White with Gaming Vibe */
+  .gaming-title {
+    color: white;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 0 40px rgba(255, 255, 255, 0.2),
+      0 0 50px rgba(255, 255, 255, 0.1),
+      0 0 60px rgba(255, 255, 255, 0.05),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.1em;
+    font-weight: 900;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+    animation: gamingGlow 3s ease-in-out infinite alternate;
+  }
+  
+  .gaming-title:hover {
+    text-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.9),
+      0 0 25px rgba(255, 255, 255, 0.7),
+      0 0 35px rgba(255, 255, 255, 0.5),
+      0 0 45px rgba(255, 255, 255, 0.3),
+      0 0 55px rgba(255, 255, 255, 0.2),
+      0 0 65px rgba(255, 255, 255, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+  }
+  
+  /* Floating Animation */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Custom Keyframes */
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes pulseGlow {
+    0% { box-shadow: var(--glow-magic); }
+    100% { box-shadow: var(--glow-magic), 0 0 40px hsl(280 100% 65% / 0.6); }
+  }
+  
+  @keyframes gamingGlow {
+    0% { 
+      text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(255, 255, 255, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.2),
+        0 0 50px rgba(255, 255, 255, 0.1),
+        0 0 60px rgba(255, 255, 255, 0.05),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    100% { 
+      text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.9),
+        0 0 25px rgba(255, 255, 255, 0.7),
+        0 0 35px rgba(255, 255, 255, 0.5),
+        0 0 45px rgba(255, 255, 255, 0.3),
+        0 0 55px rgba(255, 255, 255, 0.2),
+        0 0 65px rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Animation Classes */
+  .animate-slide-up {
+    animation: slideInUp 0.8s ease-out;
+  }
+  
+  .animate-fade-scale {
+    animation: fadeInScale 1s ease-out;
+  }
+  
+  /* 3D Transform Classes */
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-3d {
+    transform: translateZ(0);
+  }
+  
+  .rotate-y-12 {
+    transform: rotateY(12deg);
+  }
+  
+  .hover\:rotate-y-12:hover {
+    transform: rotateY(12deg);
+  }
+}
