@@ -28,6 +28,9 @@ const PlatformsSection = () => {
       name: "Xbox Series X|S",
       icon: "🎮",
       color: "wilderness",
+      colorClass: "text-wilderness",
+      bgClass: "bg-wilderness",
+      borderClass: "border-wilderness",
       features: ["4K HDR Gaming", "120 FPS Support", "Quick Resume", "Smart Delivery"],
       status: "Coming 2025"
     },
@@ -35,6 +38,9 @@ const PlatformsSection = () => {
       name: "PlayStation 5",
       icon: "🕹️",
       color: "frost",
+      colorClass: "text-frost",
+      bgClass: "bg-frost",
+      borderClass: "border-frost",
       features: ["DualSense Haptics", "3D Audio", "Ray Tracing", "Activity Cards"],
       status: "Coming 2025"
     },
@@ -42,6 +48,9 @@ const PlatformsSection = () => {
       name: "PC (Steam)",
       icon: "💻",
       color: "magic",
+      colorClass: "text-magic",
+      bgClass: "bg-magic",
+      borderClass: "border-magic",
       features: ["Ultra Settings", "Mod Support", "Cross-Platform", "Early Access"],
       status: "September 11, 2025"
     }
@@ -59,10 +68,10 @@ const PlatformsSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`}
         >
-          <h2 className="font-orbitron font-bold text-4xl md:text-6xl mb-6 cinematic-title">
+          <h2 className="font-orbitron font-bold text-3xl md:text-4xl lg:text-6xl mb-6 cinematic-title">
             CONQUER ALL REALMS
           </h2>
-          <p className="font-cinzel text-xl text-foreground/80 max-w-2xl mx-auto">
+          <p className="font-cinzel text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto px-4">
             Experience Wilderland across your favorite gaming platforms with optimized performance
           </p>
           <div className="w-24 h-1 bg-gradient-ember mx-auto mt-8" />
@@ -70,38 +79,38 @@ const PlatformsSection = () => {
 
         {/* Platforms Grid */}
         <div 
-          className={`grid lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000 delay-300 ${
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`}
         >
           {platforms.map((platform, index) => (
             <div 
               key={index}
-              className="game-card p-8 rounded-2xl hover:scale-105 transition-all duration-500"
+              className="game-card p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-500"
               style={{ animationDelay: `${300 + index * 200}ms` }}
             >
               {/* Platform Header */}
               <div className="text-center mb-6">
-                <div className="text-6xl mb-4">{platform.icon}</div>
-                <h3 className={`font-orbitron font-bold text-2xl text-${platform.color} mb-2`}>
+                <div className="text-4xl md:text-6xl mb-4">{platform.icon}</div>
+                <h3 className={`font-orbitron font-bold text-xl md:text-2xl ${platform.colorClass} mb-2`}>
                   {platform.name}
                 </h3>
-                <div className={`inline-block px-4 py-2 rounded-full bg-${platform.color}/10 border border-${platform.color}/30`}>
-                  <span className={`font-orbitron text-sm text-${platform.color}`}>
+                <div className={`inline-block px-3 md:px-4 py-2 rounded-full ${platform.bgClass}/10 ${platform.borderClass}/30 border`}>
+                  <span className={`font-orbitron text-xs md:text-sm ${platform.colorClass}`}>
                     {platform.status}
                   </span>
                 </div>
               </div>
 
               {/* Features List */}
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-6 md:mb-8">
                 {platform.features.map((feature, featureIndex) => (
                   <div 
                     key={featureIndex}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-muted/10"
+                    className="flex items-center gap-3 p-2 md:p-3 rounded-lg bg-muted/10"
                   >
-                    <div className={`w-2 h-2 bg-${platform.color} rounded-full pulse-glow`} />
-                    <span className="font-orbitron text-sm text-foreground/80">{feature}</span>
+                    <div className={`w-2 h-2 ${platform.bgClass} rounded-full pulse-glow`} />
+                    <span className="font-orbitron text-xs md:text-sm text-foreground/80">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -110,7 +119,7 @@ const PlatformsSection = () => {
               <div className="space-y-3">
                 {platform.name.includes("PC") ? (
                   <Button 
-                    className={`w-full hero-glow bg-${platform.color} text-background font-orbitron font-bold hover:scale-105`}
+                    className={`w-full hero-glow ${platform.bgClass} text-background font-orbitron font-bold hover:scale-105 text-sm md:text-base`}
                   >
                     <Download className="w-4 h-4 mr-2" />
                     Join Beta Now
@@ -118,7 +127,7 @@ const PlatformsSection = () => {
                 ) : (
                   <Button 
                     variant="outline"
-                    className={`w-full border-${platform.color} text-${platform.color} hover:bg-${platform.color} hover:text-background font-orbitron font-bold`}
+                    className={`w-full ${platform.borderClass} ${platform.colorClass} hover:${platform.bgClass} hover:text-background font-orbitron font-bold text-sm md:text-base`}
                   >
                     <Bell className="w-4 h-4 mr-2" />
                     Get Notified
@@ -126,7 +135,7 @@ const PlatformsSection = () => {
                 )}
                 <Button 
                   variant="ghost"
-                  className="w-full font-orbitron text-sm text-foreground/60 hover:text-foreground"
+                  className="w-full font-orbitron text-xs md:text-sm text-foreground/60 hover:text-foreground"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Add to Wishlist
@@ -138,18 +147,18 @@ const PlatformsSection = () => {
 
         {/* System Requirements */}
         <div 
-          className={`game-card p-8 rounded-2xl transition-all duration-1000 delay-600 ${
+          className={`game-card p-6 md:p-8 rounded-2xl transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
           }`}
         >
-          <h3 className="font-orbitron font-bold text-2xl text-magic mb-8 text-center">
+          <h3 className="font-orbitron font-bold text-xl md:text-2xl text-magic mb-6 md:mb-8 text-center">
             PC System Requirements
           </h3>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Minimum Requirements */}
             <div className="space-y-4">
-              <h4 className="font-orbitron font-semibold text-lg text-wilderness mb-4">
+              <h4 className="font-orbitron font-semibold text-base md:text-lg text-wilderness mb-4">
                 Minimum Requirements
               </h4>
               <div className="space-y-3">
@@ -160,9 +169,9 @@ const PlatformsSection = () => {
                   { label: "Graphics", value: "GTX 1060 6GB / RX 580 8GB" },
                   { label: "Storage", value: "50 GB available space" }
                 ].map((req, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-muted/10">
-                    <span className="font-orbitron text-sm text-foreground/70">{req.label}</span>
-                    <span className="text-sm text-foreground/90">{req.value}</span>
+                  <div key={index} className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 rounded-lg bg-muted/10 gap-2">
+                    <span className="font-orbitron text-xs md:text-sm text-foreground/70">{req.label}</span>
+                    <span className="text-xs md:text-sm text-foreground/90 text-right">{req.value}</span>
                   </div>
                 ))}
               </div>
@@ -170,7 +179,7 @@ const PlatformsSection = () => {
 
             {/* Recommended Requirements */}
             <div className="space-y-4">
-              <h4 className="font-orbitron font-semibold text-lg text-ember mb-4">
+              <h4 className="font-orbitron font-semibold text-base md:text-lg text-ember mb-4">
                 Recommended Requirements
               </h4>
               <div className="space-y-3">
@@ -181,9 +190,9 @@ const PlatformsSection = () => {
                   { label: "Graphics", value: "RTX 3070 / RX 6700 XT" },
                   { label: "Storage", value: "50 GB SSD space" }
                 ].map((req, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-muted/10">
-                    <span className="font-orbitron text-sm text-foreground/70">{req.label}</span>
-                    <span className="text-sm text-foreground/90">{req.value}</span>
+                  <div key={index} className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 rounded-lg bg-muted/10 gap-2">
+                    <span className="font-orbitron text-xs md:text-sm text-foreground/70">{req.label}</span>
+                    <span className="text-xs md:text-sm text-foreground/90 text-right">{req.value}</span>
                   </div>
                 ))}
               </div>
